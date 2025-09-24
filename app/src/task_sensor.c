@@ -188,7 +188,6 @@ void task_sensor_statechart(void)
 				{
 					p_task_sensor_dta->state = ST_BTN_XX_FALLING;
 					p_task_sensor_dta->tick = DEL_BTN_XX_MAX;
-					HAL_GPIO_WritePin(LED_A_PORT, LED_A_PIN, GPIO_PIN_SET);
 				}
 				break;
 
@@ -207,7 +206,6 @@ void task_sensor_statechart(void)
 					{
 						p_task_sensor_dta->state = ST_BTN_XX_DOWN;
 						put_event_task_system(p_task_sensor_cfg->signal_down);
-						printf("Botón Azul PRESIONADO\n");
 					}
 				}
 				break;
@@ -230,10 +228,8 @@ void task_sensor_statechart(void)
 				{
 					if (p_task_sensor_dta->event == EV_BTN_XX_UP)
 					{
-						HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 						p_task_sensor_dta->state = ST_BTN_XX_UP;
 						put_event_task_system(p_task_sensor_cfg->signal_up);
-						printf("Botón Azul LIBERADO\n");
 					}
 					else
 					{
